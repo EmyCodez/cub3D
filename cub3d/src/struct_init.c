@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.h                                             :+:      :+:    :+:   */
+/*   struct_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 13:15:49 by esimpson          #+#    #+#             */
-/*   Updated: 2024/09/20 16:17:00 by adshafee         ###   ########.fr       */
+/*   Created: 2024/09/20 16:51:02 by adshafee          #+#    #+#             */
+/*   Updated: 2024/09/20 17:53:49 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYS_H
-# define KEYS_H
+#include "../includes/cub3d.h"
 
-# define KEY_ESC 53
-
-#endif
+void	struct_initialization(t_map *map)
+{
+	map->map = NULL;
+	map->f_red = 0;
+	map->f_green = 0;
+	map->f_blue = 0;
+	map->c_red = 0;
+	map->c_green = 0;
+	map->c_blue = 0;
+	map->no_texture_path = NULL;
+	map->so_texture_path = NULL;
+	map->ea_texture_path = NULL;
+	map->we_texture_path = NULL;
+}

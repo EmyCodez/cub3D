@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:08:07 by esimpson          #+#    #+#             */
-/*   Updated: 2024/09/19 15:46:09 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/09/20 18:23:03 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,68 @@
 # define TILE_SIZE 30
 # define FOV 60
 
-// Libraries
+/* ------------------------------- INCLUDES --------------------------------- */
+
 # include "../library/libft/libft.h"
-# include "../library/mlx/mlx.h"
+# include "../library/get_next_line/get_next_line.h"
+#include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdbool.h>
 
-typedef struct s_map
+# define RESET "\033[0m"
+# define RED "\033[31m"
+# define GREEN "\033[32m"
+# define YELLOW "\033[33m"
+# define BLUE "\033[34m"
+
+# define COLOUR_EXCEED_VALUE 255
+
+/* ----------------------------- DATA STRUCTURES --------------------------- */
+
+typedef struct t_list
 {
-	int		width;
-	int		height;
-	int		player_x;
-	int		player_y;
-	char	**arr_map;
+	char	**map;
+	int		f_red;
+	int		f_green;
+	int		f_blue;
+	int		c_red;
+	int		c_green;
+	int		c_blue;
+	char	no_texture_path;
+	char	so_texture_path;
+	char	ea_texture_path;
+	char	we_texture_path;
+}	t_map;
 
-}			t_map;
+/* --------------------------- FUNCTION PROTOTYPES ------------------------- */
 
-typedef struct s_ray
-{
-	double	distance;
-	double	ray_angle;
-	int		wall_flag;
-}			t_ray;
+/* ************************************************************************** */
+/*                              FILENAME: parse.c                             */
+/* USAGE:                                                                     */
+/* Include this header file in any C file that requires access to the         */
+/* [module] functions and data types. Example:                                */
+/* ************************************************************************** */
 
-typedef struct s_image
-{
-	void	*image;
-}			t_image;
+void	parse_input(char **av, t_map *map);
 
-// FUNCTIONS
-t_map		*dummy_init(void);
+/* ************************************************************************** */
+/*                              FILENAME: struct_init.c                       */
+/* USAGE:                                                                     */
+/* Include this header file in any C file that requires access to the         */
+/* [module] functions and data types. Example:                                */
+/* ************************************************************************** */
+
+void	struct_initialization(t_map *map);
+
+/* ************************************************************************** */
+/*                              FILENAME: extention_check.c                   */
+/* USAGE:                                                                     */
+/* Include this header file in any C file that requires access to the         */
+/* [module] functions and data types. Example:                                */
+/* ************************************************************************** */
+
+int	validate_file_extention(char *str);
 
 #endif
