@@ -6,7 +6,7 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:42:08 by adhil             #+#    #+#             */
-/*   Updated: 2023/12/23 13:35:45 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/09/22 10:22:25 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,14 @@ char	*get_next_line(int fd);
 
 // GNL_utilities
 
-char	*ft_strjoin(char *s1, char *s2);
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
+char	*get_next_line(int fd);
+char	*read_to_remaining(int fd, char *remaining);
+char	*assign_to_return_line(char *remaining);
+char	*clear_stuffs_from_remaining(char *remaining);
+char	*finalize_the_output_for_so_long(char *str);
+char	*ft_strjoin_g(char *s1, char *s2);
+size_t	ftstrleng(const char *s);
+char	*ft_strchr_g(const char *s, int c);
+
 
 #endif

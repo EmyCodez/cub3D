@@ -6,16 +6,16 @@
 #    By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 19:31:51 by adshafee          #+#    #+#              #
-#    Updated: 2024/02/13 19:56:42 by adshafee         ###   ########.fr        #
+#    Updated: 2024/09/22 10:34:20 by adshafee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-NAME = get_next_line
+NAME = get_next_line.a
 AR = ar -rc
 RM = rm -rf
-SRC = get_next_line.c get_next_line_utils.c \
+SRC = get_next_line.c get_next_line_utils.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -34,3 +34,5 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

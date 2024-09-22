@@ -6,7 +6,7 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:00:50 by adshafee          #+#    #+#             */
-/*   Updated: 2024/09/20 17:07:03 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/09/22 10:24:22 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static int	is_my_map_is_okay(char *str)
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf(RED"[1;31m(ERROR) File not found....!"RESET);
+		ft_printf(RED"(ERROR) File not found....!"RESET);
 		return (0);
 	}
 	read_bytes = read(fd, buf, 1);
 	if (read_bytes == 0)
 	{
-		ft_printf(RED"[1;31m(ERROR) No contents in File....!"RESET);
+		ft_printf(RED"(ERROR) No contents in File....!"RESET);
 		return (0);
 		close(fd);
 	}
@@ -40,12 +40,12 @@ static int	extention_check(char *str)
 	if (str[0] == '.' && str[1] == 'c' && str[2] == 'u'
 		&& str[3] == 'b' && str[4] == '\0')
 	{
-		ft_printf(RED"[1;31m(ERROR) File name is invalid...!"RESET);
+		ft_printf(RED"(ERROR) File name is invalid...!"RESET);
 		return (0);
 	}
 	if (str[0] == '\0')
 	{
-		ft_printf(RED"[1;31m(ERROR) File name cannot be empty\n"RESET);
+		ft_printf(RED"(ERROR) File name cannot be empty\n"RESET);
 		return (0);
 	}
 	if (!is_my_map_is_okay(str))

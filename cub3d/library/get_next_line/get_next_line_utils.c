@@ -6,19 +6,19 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 16:48:24 by adhil             #+#    #+#             */
-/*   Updated: 2023/12/24 13:27:00 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/09/22 10:19:48 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_g(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
 	char	*n_str;
 
-	n_str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	n_str = (char *)malloc(sizeof(char) * (ftstrleng(s1) + ftstrleng(s2) + 1));
 	if (!n_str)
 		return (0);
 	i = 0;
@@ -38,7 +38,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (n_str);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ftstrleng(const char *s)
 {
 	int	i;
 
@@ -52,7 +52,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr_g(const char *s, int c)
 {
 	char	chr;
 

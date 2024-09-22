@@ -6,7 +6,7 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:05:52 by adhil             #+#    #+#             */
-/*   Updated: 2024/02/21 02:06:07 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/09/22 10:19:55 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*read_to_remaining(int fd, char *remaining)
 	if (!buffer)
 		return (NULL);
 	read_bytes = 1;
-	while (read_bytes > 0 && !ft_strchr(remaining, '\n'))
+	while (read_bytes > 0 && !ft_strchr_g(remaining, '\n'))
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes <= 0)
@@ -35,7 +35,7 @@ char	*read_to_remaining(int fd, char *remaining)
 		}
 		buffer[read_bytes] = '\0';
 		temp = remaining;
-		remaining = ft_strjoin(remaining, buffer);
+		remaining = ft_strjoin_g(remaining, buffer);
 		free(temp);
 	}
 	return (free(buffer), remaining);
@@ -85,7 +85,7 @@ char	*clear_stuffs_from_remaining(char *remaining)
 		free(remaining);
 		return (NULL);
 	}
-	new_remaining = malloc(ft_strlen(remaining) - i + 1);
+	new_remaining = malloc(ftstrleng(remaining) - i + 1);
 	if (!new_remaining)
 	{
 		free(remaining);

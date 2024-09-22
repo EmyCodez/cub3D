@@ -3,53 +3,54 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+         #
+#    By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/22 15:31:19 by esimpson          #+#    #+#              #
-#    Updated: 2024/09/19 11:20:49 by esimpson         ###   ########.fr        #
+#    Updated: 2024/09/22 12:49:27 by adshafee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3 
+# CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3 
 
-MLX_PATH = ./library/mlx
-LIBFT_PATH = ./library/libft
+LIBFT = ./library/libft/libft.a
+GNL = ./library/get_next_line/get_next_line.a
+PRINTF = ./library/libftprintf/libftprintf.a
+
 SRC_PATH = ./src
-EXEC_PATH = ./src/execution
-PARSE_PATH = ./src/parsing
+SRC_FILES = $(SRC_PATH)/main.c $(SRC_PATH)/parse.c $(SRC_PATH)/extention_check.c \
+            $(SRC_PATH)/struct_init.c $(SRC_PATH)/texture_validator.c $(SRC_PATH)/texture_validator2.c \
 
-MLX_FLAGS = -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit -lm
-
-MLX = $(MLX_PATH)/libmlx.a
-LIBFT = $(LIBFT_PATH)/libft.a
-
-SRC_FILES = $(SRC_PATH)/main.c $(SRC_PATH)/dummy_init.c
-				 			 
-
-SRC_OBJ = $(SRC_FILES:.c=.o)
-
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+OBJ_FILES = $(SRC_FILES:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(SRC_OBJ) 
-	@make -C $(MLX_PATH) all
-	@make -C $(LIBFT_PATH) all
-	@$(CC) $(CFLAGS) $(SRC_OBJ) $(MLX_FLAGS) $(LIBFT) $(MLX) -o $(NAME)
-	@echo "SUCCESSFULLY MADE $(words $(SRC_OBJ)) object files"
+$(NAME): $(OBJ_FILES) $(LIBFT) $(GNL) $(PRINTF)
+	@$(CC) $(CFLAGS) $(OBJ_FILES) -o $(NAME) $(LIBFT) $(GNL) $(PRINTF)
+
+$(LIBFT):
+	@make -C ./library/libft
+
+$(GNL):
+	@make -C ./library/get_next_line
+
+$(PRINTF):
+	@make -C ./library/libftprintf
 
 clean:
-	@make -C $(MLX_PATH) clean
-	@make -C $(LIBFT_PATH) clean
-	@rm -f $(SRC_OBJ) 
+	@make -C ./library/libft clean
+	@make -C ./library/get_next_line clean
+	@make -C ./library/libftprintf clean
+	@rm -f $(OBJ_FILES)
 
 fclean: clean
-	@make -C $(LIBFT_PATH) fclean
+	@make -C ./library/libft fclean
+	@make -C ./library/get_next_line fclean
+	@make -C ./library/libftprintf fclean
 	@rm -f $(NAME)
 
-re: fclean $(NAME)
+re: fclean all
 
-.PHONY:	all clean fclean re 
+.PHONY: all clean fclean re

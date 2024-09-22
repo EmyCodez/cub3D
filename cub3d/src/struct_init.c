@@ -6,7 +6,7 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:51:02 by adshafee          #+#    #+#             */
-/*   Updated: 2024/09/20 17:53:49 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/09/22 08:20:37 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	struct_initialization(t_map *map)
 {
-	map->map = NULL;
+	map->maps = NULL;
 	map->f_red = 0;
 	map->f_green = 0;
 	map->f_blue = 0;

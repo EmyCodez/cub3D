@@ -6,7 +6,7 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:08:07 by esimpson          #+#    #+#             */
-/*   Updated: 2024/09/20 18:23:03 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/09/22 12:23:33 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # include "../library/libft/libft.h"
 # include "../library/get_next_line/get_next_line.h"
+# include "../library/libftprintf/ft_printf.h"
 #include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -40,17 +41,17 @@
 
 typedef struct t_list
 {
-	char	**map;
+	char	**maps;
 	int		f_red;
 	int		f_green;
 	int		f_blue;
 	int		c_red;
 	int		c_green;
 	int		c_blue;
-	char	no_texture_path;
-	char	so_texture_path;
-	char	ea_texture_path;
-	char	we_texture_path;
+	char	*no_texture_path;
+	char	*so_texture_path;
+	char	*ea_texture_path;
+	char	*we_texture_path;
 }	t_map;
 
 /* --------------------------- FUNCTION PROTOTYPES ------------------------- */
@@ -62,7 +63,7 @@ typedef struct t_list
 /* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
-void	parse_input(char **av, t_map *map);
+void	parse_input(char *path, t_map *map);
 
 /* ************************************************************************** */
 /*                              FILENAME: struct_init.c                       */
@@ -80,6 +81,16 @@ void	struct_initialization(t_map *map);
 /* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
-int	validate_file_extention(char *str);
+int		validate_file_extention(char *str);
+
+/* ************************************************************************** */
+/*                              FILENAME: texture_validator.c                 */
+/* USAGE:                                                                     */
+/* Include this header file in any C file that requires access to the         */
+/* [module] functions and data types. Example:                                */
+/* ************************************************************************** */
+
+int		validate_texture(char *path, t_map *map);
+int		check_texture_identifiers_is_present(t_map *map);
 
 #endif

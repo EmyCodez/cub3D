@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.h                                             :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 13:15:49 by esimpson          #+#    #+#             */
-/*   Updated: 2024/09/20 16:17:00 by adshafee         ###   ########.fr       */
+/*   Created: 2023/12/06 17:18:14 by adshafee          #+#    #+#             */
+/*   Updated: 2023/12/11 14:30:48 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYS_H
-# define KEYS_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# define KEY_ESC 53
+# include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
+
+int	ft_hexaconvert(unsigned long long int nbr, int uc);
+int	pointers(unsigned long long ptr);
+int	ft_putchar(char c);
+int	ft_putstr(const char *str);
+int	ft_putnbr(int nbr);
+int	unsigned_nbr(unsigned int nbr);
+int	ft_printf(const char *type, ...);
 
 #endif
