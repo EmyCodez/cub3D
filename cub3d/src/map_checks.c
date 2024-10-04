@@ -6,11 +6,103 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:07:29 by adshafee          #+#    #+#             */
-/*   Updated: 2024/10/03 14:20:57 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/10/04 10:51:33 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+
+
+void make_map_square(t_map *map) {
+    int i = 0;
+    int max_width = 0;
+
+    // Find the maximum width in the current map
+    while (i < map->map_height) {
+        int len = strlen(map->map_data[i]);
+        if (len > max_width) {
+            max_width = len;
+        }
+        i++;
+    }
+
+    // Make the map square, ensuring it's as wide as the maximum width
+    char **new_map = malloc(sizeof(char *) * (map->map_height + 2));  // +2 for top and bottom borders
+
+    // Create the top border filled with '1's
+    new_map[0] = malloc(max_width + 3); // +1 for '\0'
+    memset(new_map[0], '1', max_width + 2);
+    new_map[0][max_width + 2] = '\0';
+
+    // Adjust the existing map, padding with '1's to form a square
+    i = 0;
+    while (i < map->map_height) {
+        new_map[i + 1] = malloc(max_width + 3); // +1 for '\0'
+        memset(new_map[i + 1], '1', max_width + 2); // Initialize with '1's
+
+        // Copy the existing map data into the new padded map
+        int len = strlen(map->map_data[i]);
+        strncpy(new_map[i + 1] + 1, map->map_data[i], len);  // Insert current line data, offset by 1 for padding
+        new_map[i + 1][max_width + 1] = '1'; // Right-side padding with '1'
+        new_map[i + 1][max_width + 2] = '\0';
+        i++;
+    }
+
+    // Create the bottom border filled with '1's
+    new_map[map->map_height + 1] = malloc(max_width + 3);
+    memset(new_map[map->map_height + 1], '1', max_width + 2);
+    new_map[map->map_height + 1][max_width + 2] = '\0';
+
+    // Free old map data
+    i = 0;
+    while (i < map->map_height) {
+        free(map->map_data[i]);
+        i++;
+    }
+    free(map->map_data);
+
+    // Update the map structure
+    map->map_data = new_map;
+    map->map_height += 2;  // Update the height to include the top and bottom borders
+}
+
+
+
+
+
+int check_line_lengths(t_map *map) {
+    // Loop through each line, starting from the second line and stopping before the last line
+    int i = 1;  // Start from the second line
+    while (i < map->map_height - 1) {
+        int prev_len = strlen(map->map_data[i - 1]);
+        int curr_len = strlen(map->map_data[i]);
+        int next_len = strlen(map->map_data[i + 1]);
+
+        // Check if current line is longer than both the previous and the next lines
+        if (curr_len > prev_len && curr_len > next_len) {
+            printf(RED "Error\n" RESET "Line %d is longer than both the previous and next lines\n", i + 1);
+            return 0;  // Exit the function with an error
+        }
+
+        i++;  // Move to the next line
+    }
+
+    return 1;  // All lines are valid
+}
+
+int validate_map_structure(t_map *map) {
+    if (!check_line_lengths(map)) {
+        printf(RED "Error\n" RESET "Map has invalid structure due to line length inconsistency.\n");
+        return 0;
+    }
+
+    printf("Map structure is valid.\n");
+    return 1;
+}
+
+
+
 
 int check_valid_characters(t_map *map)
 {
@@ -97,6 +189,10 @@ int	map_checks(t_map *map)
 	ft_printf(GREEN"Player Position Check Successfull\n"RESET);
 	if (!check_walls(map))
 		return (0);
+    make_map_square(map);
+        
+    if (!validate_map_structure(map))
+        return (0);
 	if (!validate_and_replace_spaces(map))
 		return (0);
     ft_printf(GREEN"Map Wall Check Successfull\n"RESET);
