@@ -6,7 +6,7 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:08:07 by esimpson          #+#    #+#             */
-/*   Updated: 2024/09/22 12:23:33 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/10/03 14:24:36 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,11 @@
 
 typedef struct t_list
 {
-	char	**maps;
+	char	**map_data;
+	char	**map_data_cpy;
+	int		map_height;
+	int		map_width;
+	int		player_cnt;
 	int		f_red;
 	int		f_green;
 	int		f_blue;
@@ -52,6 +56,9 @@ typedef struct t_list
 	char	*so_texture_path;
 	char	*ea_texture_path;
 	char	*we_texture_path;
+	char	**hold_color_value;
+	char	*ceiling_color_value;
+	char	*floor_color_value;
 }	t_map;
 
 /* --------------------------- FUNCTION PROTOTYPES ------------------------- */
@@ -92,5 +99,38 @@ int		validate_file_extention(char *str);
 
 int		validate_texture(char *path, t_map *map);
 int		check_texture_identifiers_is_present(t_map *map);
+
+/* ************************************************************************** */
+/*                              FILENAME: color_validator.c                   */
+/* USAGE:                                                                     */
+/* Include this header file in any C file that requires access to the         */
+/* [module] functions and data types. Example:                                */
+/* ************************************************************************** */
+
+int validate_color(char *path, t_map *map);
+
+/* ************************************************************************** */
+/*                              FILENAME: map_validator.c                     */
+/* USAGE:                                                                     */
+/* Include this header file in any C file that requires access to the         */
+/* [module] functions and data types. Example:                                */
+/* ************************************************************************** */
+
+int	map_validator(char *path, t_map *map);
+
+/* ************************************************************************** */
+/*                              FILENAME: map_checks                          */
+/* USAGE:                                                                     */
+/* Include this header file in any C file that requires access to the         */
+/* [module] functions and data types. Example:                                */
+/* ************************************************************************** */
+
+int	map_checks(t_map *map);
+
+
+int validate_and_replace_spaces(t_map *map);
+
+void	print_map(t_map *map);
+
 
 #endif

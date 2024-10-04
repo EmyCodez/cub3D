@@ -6,7 +6,7 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:51:02 by adshafee          #+#    #+#             */
-/*   Updated: 2024/09/22 08:20:37 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:38:57 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 void	struct_initialization(t_map *map)
 {
-	map->maps = NULL;
+	map->map_data = NULL;
+	map->map_data_cpy = NULL;
+	map->player_cnt = 0;
+	map->map_width = 0;
+	map->map_height = 0;
 	map->f_red = 0;
 	map->f_green = 0;
 	map->f_blue = 0;
@@ -25,4 +29,7 @@ void	struct_initialization(t_map *map)
 	map->so_texture_path = NULL;
 	map->ea_texture_path = NULL;
 	map->we_texture_path = NULL;
+	map->hold_color_value = NULL;
+	map->ceiling_color_value = NULL;
+	map->floor_color_value = NULL;
 }

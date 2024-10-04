@@ -6,13 +6,13 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 18:20:19 by adshafee          #+#    #+#             */
-/*   Updated: 2024/09/22 14:46:19 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:04:48 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	assign_texture_files(char *path, t_map *map)
+void	 assign_texture_files(char *path, t_map *map)
 {
 	char	*line;
 	int		fd;
@@ -96,10 +96,11 @@ static int	extention_check_two(char *str)
 
 static int	texture_extention_check(char *str, int *error)
 {
-	char			*main_extention;
-	static int		i;
-	int				j;
+	char	*main_extention;
+	int		i;
+	int		j;
 
+	i = 0;
 	if (!str)
 		return(ft_printf(RED"Issue Bro\n"RESET), (*error)++, 0);
 	j = 4;
