@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:10:52 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/01 15:51:42 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:21:17 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,5 @@ int	main(int ac, char **av)
 	printf("\n Player Position: X= %f Y=%f ", data.player.pos_x,
 			data.player.pos_y);
 	printf("\n Player Direction: %c", data.player.direction);
-	mlx_pixel_put(data.mlx_ptr, data.win_ptr, (int)data.player.dir_x,
-			(int)data.player.dir_y, data.ceiling_color);
-	mlx_loop(data.mlx_ptr);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:08:07 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/01 15:48:39 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:21:30 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,30 @@ typedef struct s_key
 	bool		right;
 }				t_key;
 
+typedef struct s_line
+{
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+}				t_line;
+
+typedef struct s_ray
+{
+	double		raydir_x;
+	double		raydir_y;
+	int			map_x;
+	int			map_y;
+	double		side_x;
+	double		side_y;
+	int			step_x;
+	int			step_y;
+	int			next_hop;
+	double		dx;
+	double		dy;
+	double		wall_dist;
+	t_line		line;
+}				t_ray;
+
 typedef struct s_player
 {
 	double		pos_x;
@@ -91,6 +115,7 @@ typedef struct s_player
 	double		dir_y;
 	double		plane_x;
 	double		plane_y;
+	double		camera_x;
 	char		direction;
 }				t_player;
 
@@ -100,6 +125,7 @@ typedef struct s_data
 	void		*win_ptr;
 	t_map		map;
 	t_key		key;
+	t_ray		ray;
 	t_player	player;
 	t_image		cur_img;
 	t_image		north_texture;
@@ -204,7 +230,18 @@ void			rotate_right(t_player *player);
 /* ************************************************************************** */
 /*                              FILENAME: execute.c                           */
 /* ************************************************************************** */
-
 void			execute(t_data *data);
+
+/* ************************************************************************** */
+/*                              FILENAME: calculate.c                         */
+/* ************************************************************************** */
+void			set_ray_length(t_ray *ray, t_player *player);
+void			calculate_wall_distance(t_map *map, t_ray *ray,
+					t_player *player);
+
+/* ************************************************************************** */
+/*                              FILENAME: raycast.c                           */
+/* ************************************************************************** */
+void			raycast(t_data *data);
 
 #endif
