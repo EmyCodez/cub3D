@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:08:07 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/04 16:21:30 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:12:18 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "../library/libft/libft.h"
 # include "../library/libftprintf/ft_printf.h"
 # include "../library/mlx/mlx.h"
+# include "keys.h"
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -85,9 +86,13 @@ typedef struct s_key
 
 typedef struct s_line
 {
-	int			line_height;
-	int			draw_start;
-	int			draw_end;
+	int			wall_height;
+	int			wall_start;
+	int			wall_end;
+	int			x;
+	int			y;
+	int			y_start;
+	int			y_end;
 }				t_line;
 
 typedef struct s_ray
@@ -104,7 +109,6 @@ typedef struct s_ray
 	double		dx;
 	double		dy;
 	double		wall_dist;
-	t_line		line;
 }				t_ray;
 
 typedef struct s_player
@@ -127,7 +131,8 @@ typedef struct s_data
 	t_key		key;
 	t_ray		ray;
 	t_player	player;
-	t_image		cur_img;
+	t_image		win_img;
+	t_line		line;
 	t_image		north_texture;
 	t_image		south_texture;
 	t_image		west_texture;
@@ -140,36 +145,24 @@ typedef struct s_data
 
 /* ************************************************************************** */
 /*                              FILENAME: parse.c                             */
-/* USAGE:                                                                     */
-/* Include this header file in any C file that requires access to the         */
-/* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
 void			parse_input(char *path, t_map *map);
 
 /* ************************************************************************** */
 /*                              FILENAME: struct_init.c                       */
-/* USAGE:                                                                     */
-/* Include this header file in any C file that requires access to the         */
-/* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
 void			struct_initialization(t_map *map);
 
 /* ************************************************************************** */
 /*                              FILENAME: extention_check.c                   */
-/* USAGE:                                                                     */
-/* Include this header file in any C file that requires access to the         */
-/* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
 int				validate_file_extention(char *str);
 
 /* ************************************************************************** */
 /*                              FILENAME: texture_validator.c                 */
-/* USAGE:                                                                     */
-/* Include this header file in any C file that requires access to the         */
-/* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
 int				validate_texture(char *path, t_map *map);
@@ -177,27 +170,18 @@ int				check_texture_identifiers_is_present(t_map *map);
 
 /* ************************************************************************** */
 /*                              FILENAME: color_validator.c                   */
-/* USAGE:                                                                     */
-/* Include this header file in any C file that requires access to the         */
-/* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
 int				validate_color(char *path, t_map *map);
 
 /* ************************************************************************** */
 /*                              FILENAME: map_validator.c                     */
-/* USAGE:                                                                     */
-/* Include this header file in any C file that requires access to the         */
-/* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
 int				map_validator(char *path, t_map *map);
 
 /* ************************************************************************** */
 /*                              FILENAME: map_checks                          */
-/* USAGE:                                                                     */
-/* Include this header file in any C file that requires access to the         */
-/* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
 int				map_checks(t_map *map);
@@ -238,6 +222,22 @@ void			execute(t_data *data);
 void			set_ray_length(t_ray *ray, t_player *player);
 void			calculate_wall_distance(t_map *map, t_ray *ray,
 					t_player *player);
+
+/* ************************************************************************** */
+/*                              FILENAME: movement.c                          */
+/* ************************************************************************** */
+void			move_forward(t_data *data);
+void			move_backward(t_data *data);
+void			move_left(t_data *data);
+void			move_right(t_data *data);
+
+/* ************************************************************************** */
+/*                              FILENAME: hooks.c								*/
+/* ************************************************************************** */
+int				on_keyrelease(int key, void *info);
+int				hook_loop(void *info);
+int				on_keypress(int key, void *info);
+int				exit_game(void *info);
 
 /* ************************************************************************** */
 /*                              FILENAME: raycast.c                           */
