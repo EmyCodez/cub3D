@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:07:17 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/04 15:00:38 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:04:18 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ void	set_ray_length(t_ray *ray, t_player *player)
 		ray->dy = 1e30;
 	else
 		ray->dy = fabs(1 / ray->raydir_y);
-	printf("\n ray->raydir_y = %f ray->raydir_x = %f", ray->raydir_y,
-			ray->raydir_x);
-	printf("\n ray->dy = %f ray->dx = %f", ray->dy, ray->dx);
 }
 static void	calculate_step_and_side(t_ray *ray, t_player *player)
 {
@@ -78,11 +75,6 @@ static void	check_wall_hit_dda(t_ray *ray, t_map *map)
 		ray->wall_dist = (ray->side_x - ray->dx);
 	else
 		ray->wall_dist = (ray->side_y - ray->dy);
-	printf("\n hit = %d ray->next_hop = %d", hit, ray->next_hop);
-	printf("\n ray->wall_dist = %f \n ray->side_y= %f ray->dy = %f",
-			ray->wall_dist,
-			ray->side_y,
-			ray->dy);
 }
 
 void	calculate_wall_distance(t_map *map, t_ray *ray, t_player *player)
