@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 10:11:36 by esimpson          #+#    #+#             */
-/*   Updated: 2023/12/29 12:31:14 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:16:15 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int		ft_atoi_base(const char *str, int str_base);
 
 /* Get Next Line Functions */
 
-char	*ft_gnljoin(char *stash, char *s2);
-char	*ft_getline(char *stash);
-char	*ft_update_stash(char *stash);
-char	*get_next_line(int fd);
+// char	*ft_gnljoin(char *stash, char *s2);
+// char	*ft_getline(char *stash);
+// char	*ft_update_stash(char *stash);
+// char	*get_next_line(int fd);
 
 #endif

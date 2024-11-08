@@ -6,7 +6,7 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 18:20:19 by adshafee          #+#    #+#             */
-/*   Updated: 2024/09/27 16:04:48 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/10/29 13:34:11 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	 assign_texture_files(char *path, t_map *map)
 {
 	char	*line;
 	int		fd;
-	
+
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
