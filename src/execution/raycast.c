@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:03:38 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/07 13:51:33 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/08 13:45:22 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	draw_wall(t_data *data, int current_x)
 {
 	double	wall_x;
 
-	if (data->ray.next_hop == 0)
+	if (data->ray.cur_side == 0)
 		wall_x = data->player.pos_y + data->ray.wall_dist * data->ray.raydir_y;
 	else
 		wall_x = data->player.pos_x + data->ray.wall_dist * data->ray.raydir_x;
@@ -61,6 +61,7 @@ static void	draw_wall(t_data *data, int current_x)
 	{
 		data->line.y_start = data->line.wall_start;
 		data->line.y_end = data->line.wall_end;
+		paint_texture_line(data, &data->ray, &data->line, wall_x);
 	}
 	data->line.y_start = 0;
 	data->line.y_end = data->line.wall_start;

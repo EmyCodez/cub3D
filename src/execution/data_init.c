@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:15:12 by esimpson          #+#    #+#             */
-/*   Updated: 2024/10/29 13:36:36 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/08 13:50:43 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,8 @@ void	data_init(t_data *data)
 	init_keys(&data->key);
 	init_color(data);
 	init_player(data);
+	load_texture(data, &data->north_texture, data->map.no_texture_path);
+	load_texture(data, &data->south_texture, data->map.so_texture_path);
+	load_texture(data, &data->east_texture, data->map.ea_texture_path);
+	load_texture(data, &data->west_texture, data->map.we_texture_path);
 }

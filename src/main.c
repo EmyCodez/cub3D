@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:10:52 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/07 12:22:21 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:47:14 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,5 @@ int	main(int ac, char **av)
 												&data.win_img.line_length,
 												&data.win_img.endian);
 	execute(&data);
-	printf("\n Player Position: X= %f Y=%f ", data.player.pos_x,
-			data.player.pos_y);
-	printf("\n Player Direction: %c", data.player.direction);
 	return (0);
 }

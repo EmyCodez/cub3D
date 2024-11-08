@@ -6,7 +6,7 @@
 #    By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/22 15:31:19 by esimpson          #+#    #+#              #
-#    Updated: 2024/11/07 15:34:49 by esimpson         ###   ########.fr        #
+#    Updated: 2024/11/08 13:49:44 by esimpson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SRC_FILES =	$(SRC_PATH)/main.c \
 			$(PARSE_PATH)/color_validator.c $(PARSE_PATH)/map_validator.c $(PARSE_PATH)/map_checks.c \
 			$(EXEC_PATH)/execute.c  $(EXEC_PATH)/data_init.c $(EXEC_PATH)/init_player.c \
 			$(EXEC_PATH)/player_direction.c $(EXEC_PATH)/rotate.c $(EXEC_PATH)/calculate.c \
-			$(EXEC_PATH)/raycast.c $(EXEC_PATH)/movement.c $(EXEC_PATH)/hooks.c
+			$(EXEC_PATH)/raycast.c $(EXEC_PATH)/movement.c $(EXEC_PATH)/hooks.c $(EXEC_PATH)/texture.c
 				 			 
 SRC_OBJ = $(SRC_FILES:.c=.o)
 

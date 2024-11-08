@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:08:07 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/07 16:12:18 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:15:33 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WIN_WIDTH 720
 # define WIN_HEIGHT 560
 # define ROTATE_SPEED 0.05
-# define MOVE_SPEED 0.05
+
 
 /* ------------------------------- INCLUDES --------------------------------- */
 
@@ -93,6 +93,8 @@ typedef struct s_line
 	int			y;
 	int			y_start;
 	int			y_end;
+	int			texture_x;
+	int			texture_y;
 }				t_line;
 
 typedef struct s_ray
@@ -105,7 +107,7 @@ typedef struct s_ray
 	double		side_y;
 	int			step_x;
 	int			step_y;
-	int			next_hop;
+	int			cur_side;
 	double		dx;
 	double		dy;
 	double		wall_dist;
@@ -234,10 +236,17 @@ void			move_right(t_data *data);
 /* ************************************************************************** */
 /*                              FILENAME: hooks.c								*/
 /* ************************************************************************** */
-int				on_keyrelease(int key, void *info);
-int				hook_loop(void *info);
-int				on_keypress(int key, void *info);
-int				exit_game(void *info);
+int				on_keyrelease(int key, t_data *data);
+int				hook_loop(t_data *data);
+int				on_keypress(int key, t_data *data);
+int				exit_game(t_data *data);
+
+/* ************************************************************************** */
+/*                              FILENAME: texture.c                           */
+/* ************************************************************************** */
+void			load_texture(t_data *data, t_image *image, char *path);
+void			paint_texture_line(t_data *data, t_ray *ray, t_line *line,
+					double wall_x);
 
 /* ************************************************************************** */
 /*                              FILENAME: raycast.c                           */

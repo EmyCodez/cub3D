@@ -6,18 +6,14 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:08:18 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/07 16:11:20 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:46:06 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	on_keyrelease(int key, void *info)
+int	on_keyrelease(int key, t_data *data)
 {
-	t_data	*data;
-
-	(void)info;
-	data = (t_data *)info;
 	if (key == KEY_W)
 		data->key.w = false;
 	else if (key == KEY_A)
@@ -32,12 +28,8 @@ int	on_keyrelease(int key, void *info)
 		data->key.left = false;
 	return (0);
 }
-int	hook_loop(void *info)
+int	hook_loop(t_data *data)
 {
-	t_data	*data;
-
-	(void)info;
-	data = (t_data *)info;
 	if (data->key.w)
 		move_forward(data);
 	else if (data->key.s)
@@ -53,12 +45,8 @@ int	hook_loop(void *info)
 	raycast(data);
 	return (0);
 }
-int	on_keypress(int key, void *info)
+int	on_keypress(int key, t_data *data)
 {
-	t_data	*data;
-
-	(void)info;
-	data = (t_data *)info;
 	if (key == KEY_ESC)
 		exit_game(data);
 	else if (key == KEY_W)
@@ -75,17 +63,22 @@ int	on_keypress(int key, void *info)
 		data->key.left = true;
 	return (0);
 }
-int	exit_game(void *info)
+int	exit_game(t_data *data)
 {
-	t_data *data;
-
-	(void)info;
-	data = (t_data *)info;
+	ft_free_matrix(&data->map.map_data);
 	if (data->win_img.img)
 		mlx_destroy_image(data->mlx_ptr, data->win_img.img);
+	if (data->north_texture.img)
+		mlx_destroy_image(data->mlx_ptr, data->north_texture.img);
+	if (data->south_texture.img)
+		mlx_destroy_image(data->mlx_ptr, data->south_texture.img);
+	if (data->east_texture.img)
+		mlx_destroy_image(data->mlx_ptr, data->east_texture.img);
+	if (data->west_texture.img)
+		mlx_destroy_image(data->mlx_ptr, data->west_texture.img);
 	if (data->win_ptr)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	//ft_free((void **)&(data->mlx_ptr));
+	ft_free_ptr((void **)&(data->mlx_ptr));
 	printf("\nGame exited\n");
 	exit(0);
 	return (0);

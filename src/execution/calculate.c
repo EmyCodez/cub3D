@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:07:17 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/07 15:04:18 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/08 13:40:04 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,18 @@ static void	check_wall_hit_dda(t_ray *ray, t_map *map)
 		{
 			ray->side_x += ray->dx;
 			ray->map_x += ray->step_x;
-			ray->next_hop = 0;
+			ray->cur_side = 0;
 		}
 		else
 		{
 			ray->side_y += ray->dy;
 			ray->map_y += ray->step_y;
-			ray->next_hop = 1;
+			ray->cur_side = 1;
 		}
 		if (map->map_data[ray->map_x][ray->map_y] == '1')
 			hit = 1;
 	}
-	if (ray->next_hop == 0)
+	if (ray->cur_side == 0)
 		ray->wall_dist = (ray->side_x - ray->dx);
 	else
 		ray->wall_dist = (ray->side_y - ray->dy);
