@@ -6,7 +6,7 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 15:41:48 by adshafee          #+#    #+#             */
-/*   Updated: 2024/11/05 16:46:59 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:07:11 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	count_map_lines(char *path)
 
 void	free_map_data(t_map *map, int line_count)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < line_count)
@@ -62,7 +62,7 @@ int	handle_blank_line(int *map_ended, char *line)
 	}
 	else if (*map_ended)
 	{
-		ft_printf(RED "Error\n" RESET "Unexpected blank line(s) after map data\n");
+		ft_printf(RED "Error\n" RESET "Unexpected blank line(s) after map\n");
 		return (1);
 	}
 	return (0);
@@ -108,7 +108,6 @@ int	read_map_lines(int fd, t_map *map)
 	return (1);
 }
 
-
 int	map_validator(char *path, t_map *map)
 {
 	int	fd;
@@ -127,4 +126,3 @@ int	map_validator(char *path, t_map *map)
 	print_map(map);
 	return (1);
 }
-	

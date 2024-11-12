@@ -6,7 +6,7 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:42:08 by adhil             #+#    #+#             */
-/*   Updated: 2024/09/22 10:22:25 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/11/10 12:55:32 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,5 @@ char	*finalize_the_output_for_so_long(char *str);
 char	*ft_strjoin_g(char *s1, char *s2);
 size_t	ftstrleng(const char *s);
 char	*ft_strchr_g(const char *s, int c);
-
 
 #endif

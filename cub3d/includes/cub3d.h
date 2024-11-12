@@ -6,7 +6,7 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:08:07 by esimpson          #+#    #+#             */
-/*   Updated: 2024/10/03 14:24:36 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/11/10 12:54:25 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "../library/libft/libft.h"
 # include "../library/get_next_line/get_next_line.h"
 # include "../library/libftprintf/ft_printf.h"
-#include <stdio.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -107,7 +107,7 @@ int		check_texture_identifiers_is_present(t_map *map);
 /* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
-int validate_color(char *path, t_map *map);
+int		validate_color(char *path, t_map *map);
 
 /* ************************************************************************** */
 /*                              FILENAME: map_validator.c                     */
@@ -116,7 +116,7 @@ int validate_color(char *path, t_map *map);
 /* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
-int	map_validator(char *path, t_map *map);
+int		map_validator(char *path, t_map *map);
 
 /* ************************************************************************** */
 /*                              FILENAME: map_checks                          */
@@ -125,12 +125,10 @@ int	map_validator(char *path, t_map *map);
 /* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
-int	map_checks(t_map *map);
+int		map_checks(t_map *map);
 
-
-int validate_and_replace_spaces(t_map *map);
+int		validate_and_replace_spaces(t_map *map);
 
 void	print_map(t_map *map);
-
 
 #endif
