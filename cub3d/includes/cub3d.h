@@ -6,7 +6,7 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:08:07 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/10 12:54:25 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:54:15 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ typedef struct t_list
 /* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
+void	print_map(t_map *map);
 void	parse_input(char *path, t_map *map);
+int		map_checks(t_map *map);
 
 /* ************************************************************************** */
 /*                              FILENAME: struct_init.c                       */
@@ -119,16 +121,40 @@ int		validate_color(char *path, t_map *map);
 int		map_validator(char *path, t_map *map);
 
 /* ************************************************************************** */
+/*                              FILENAME: map_validator2.c                    */
+/* USAGE:                                                                     */
+/* Include this header file in any C file that requires access to the         */
+/* [module] functions and data types. Example:                                */
+/* ************************************************************************** */
+
+int		is_map_line(char *line);
+void	free_map_data(t_map *map, int line_count);
+
+/* ************************************************************************** */
 /*                              FILENAME: map_checks                          */
 /* USAGE:                                                                     */
 /* Include this header file in any C file that requires access to the         */
 /* [module] functions and data types. Example:                                */
 /* ************************************************************************** */
 
-int		map_checks(t_map *map);
-
+char	*ft_strncpy(char *dest, const char *src, size_t n);
+void	create_border_row(char **row, int width);
+void	create_padded_row(char **new_row, char *old_row, int width);
+void	free_old_map(t_map *map);
+int		check_valid_characters(t_map *map);
+int		check_player_position(t_map *map);
 int		validate_and_replace_spaces(t_map *map);
 
-void	print_map(t_map *map);
+/* ************************************************************************** */
+/*                              FILENAME: map_checks2.c                       */
+/* USAGE:                                                                     */
+/* Include this header file in any C file that requires access to the         */
+/* [module] functions and data types. Example:                                */
+/* ************************************************************************** */
+
+int		check_line_lengths(t_map *map);
+int		validate_map_structure(t_map *map);
+void	make_map_square(t_map *map);
+int		check_walls(t_map *map);
 
 #endif

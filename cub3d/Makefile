@@ -6,7 +6,7 @@
 #    By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/22 15:31:19 by esimpson          #+#    #+#              #
-#    Updated: 2024/10/29 13:53:31 by adshafee         ###   ########.fr        #
+#    Updated: 2024/11/12 15:53:24 by adshafee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC_PATH = ./src
 SRC_FILES = $(SRC_PATH)/main.c $(SRC_PATH)/parse.c $(SRC_PATH)/extention_check.c \
             $(SRC_PATH)/struct_init.c $(SRC_PATH)/texture_validator.c $(SRC_PATH)/texture_validator2.c \
 			$(SRC_PATH)/color_validator.c $(SRC_PATH)/map_validator.c $(SRC_PATH)/map_checks.c \
-			$(SRC_PATH)/dfs.c
+			$(SRC_PATH)/dfs.c $(SRC_PATH)/map_checks2.c $(SRC_PATH)/map_validator2.c
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 

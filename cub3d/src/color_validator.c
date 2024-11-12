@@ -6,13 +6,11 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 18:56:37 by adshafee          #+#    #+#             */
-/*   Updated: 2024/11/12 13:14:59 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:08:51 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-#include <stdlib.h>
 
 void	ft_free_split(char **arr)
 {

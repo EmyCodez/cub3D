@@ -6,7 +6,7 @@
 /*   By: adshafee <adshafee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 10:11:36 by esimpson          #+#    #+#             */
-/*   Updated: 2024/10/22 16:16:15 by adshafee         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:45:50 by adshafee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
+char	*ft_strncpy(char *dest, const char *src, size_t n);
 
 /* Additional Functions */
 
