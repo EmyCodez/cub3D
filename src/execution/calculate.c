@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:07:17 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/08 13:40:04 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/09 12:46:35 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	set_ray_length(t_ray *ray, t_player *player)
 	else
 		ray->dy = fabs(1 / ray->raydir_y);
 }
+
 static void	calculate_step_and_side(t_ray *ray, t_player *player)
 {
 	if (ray->raydir_x < 0)

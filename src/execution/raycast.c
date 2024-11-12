@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:03:38 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/08 13:45:22 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/09 12:54:49 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	color_pixel(t_image *image, int x, int y, int color)
 				/ 8));
 	*(unsigned int *)dst = color;
 }
+
 void	paint_line(t_image *image, t_line *line, int color)
 {
 	int	y;
@@ -71,22 +72,22 @@ static void	draw_wall(t_data *data, int current_x)
 	paint_line(&data->win_img, &data->line, data->floor_color);
 }
 
-void	raycast(t_data *data)
+void	raycast(t_data *dt)
 {
-	int x;
+	int	x;
+
 	x = -1;
-	mlx_clear_window(data->mlx_ptr, data->win_ptr);
+	mlx_clear_window(dt->mlx_ptr, dt->win_ptr);
 	while (++x < WIN_WIDTH)
 	{
-		data->player.camera_x = 2 * x / (double)WIN_WIDTH - 1;
-		data->ray.raydir_x = data->player.dir_x + data->player.plane_x
-			* data->player.camera_x;
-		data->ray.raydir_y = data->player.dir_y + data->player.plane_y
-			* data->player.camera_x;
-		set_ray_length(&data->ray, &data->player);
-		calculate_wall_distance(&data->map, &data->ray, &data->player);
-		draw_wall(data, x);
+		dt->player.camera_x = 2 * x / (double)WIN_WIDTH - 1;
+		dt->ray.raydir_x = dt->player.dir_x + dt->player.plane_x
+			* dt->player.camera_x;
+		dt->ray.raydir_y = dt->player.dir_y + dt->player.plane_y
+			* dt->player.camera_x;
+		set_ray_length(&dt->ray, &dt->player);
+		calculate_wall_distance(&dt->map, &dt->ray, &dt->player);
+		draw_wall(dt, x);
 	}
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->win_img.img, 0,
-			0);
+	mlx_put_image_to_window(dt->mlx_ptr, dt->win_ptr, dt->win_img.img, 0, 0);
 }

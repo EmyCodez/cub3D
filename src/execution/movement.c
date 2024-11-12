@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:31:35 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/07 15:43:43 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/09 12:48:39 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	move_left(t_data *data)
 
 void	move_right(t_data *data)
 {
-	int new_pos_x;
-	int new_pos_y;
+	int	new_pos_x;
+	int	new_pos_y;
 
 	new_pos_x = (int)(data->player.pos_x + data->player.dir_y * 0.3);
 	new_pos_y = (int)(data->player.pos_y - data->player.dir_x * 0.3);

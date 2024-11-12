@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:57:15 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/01 14:17:58 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/09 12:50:12 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	rotate_left(t_player *player)
 	player->plane_y = oldplane_x * sin(ROTATE_SPEED) + player->plane_y
 		* cos(ROTATE_SPEED);
 }
+
 void	rotate_right(t_player *player)
 {
 	double	olddir_x;

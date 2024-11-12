@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:15:12 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/08 13:50:43 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/09 12:47:02 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static unsigned int	color_to_hex(int red, int green, int blue)
 {
 	return ((red << 16) | (green << 8) | blue);
 }
+
 static void	init_color(t_data *data)
 {
 	data->ceiling_color = color_to_hex(data->map.c_red, data->map.c_green,
@@ -23,6 +24,7 @@ static void	init_color(t_data *data)
 	data->floor_color = color_to_hex(data->map.f_red, data->map.f_green,
 			data->map.f_blue);
 }
+
 static void	init_keys(t_key *key)
 {
 	key->a = false;
@@ -32,6 +34,7 @@ static void	init_keys(t_key *key)
 	key->left = false;
 	key->right = false;
 }
+
 void	data_init(t_data *data)
 {
 	init_keys(&data->key);

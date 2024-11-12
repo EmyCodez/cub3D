@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:24:56 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/08 13:43:12 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/09 12:50:23 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	paint_texture_line(t_data *data, t_ray *ray, t_line *line,
 		line->y++;
 	}
 }
+
 void	load_texture(t_data *data, t_image *image, char *path)
 {
 	image->img = mlx_xpm_file_to_image(data->mlx_ptr, path, &image->width,

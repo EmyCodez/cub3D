@@ -6,7 +6,7 @@
 /*   By: esimpson <esimpson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:08:18 by esimpson          #+#    #+#             */
-/*   Updated: 2024/11/08 14:46:06 by esimpson         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:33:28 by esimpson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	on_keyrelease(int key, t_data *data)
 		data->key.left = false;
 	return (0);
 }
+
 int	hook_loop(t_data *data)
 {
 	if (data->key.w)
@@ -45,6 +46,7 @@ int	hook_loop(t_data *data)
 	raycast(data);
 	return (0);
 }
+
 int	on_keypress(int key, t_data *data)
 {
 	if (key == KEY_ESC)
@@ -63,9 +65,11 @@ int	on_keypress(int key, t_data *data)
 		data->key.left = true;
 	return (0);
 }
+
 int	exit_game(t_data *data)
 {
-	ft_free_matrix(&data->map.map_data);
+	if (data->map.map_data)
+		ft_free_2d_array(&data->map.map_data);
 	if (data->win_img.img)
 		mlx_destroy_image(data->mlx_ptr, data->win_img.img);
 	if (data->north_texture.img)
@@ -78,7 +82,8 @@ int	exit_game(t_data *data)
 		mlx_destroy_image(data->mlx_ptr, data->west_texture.img);
 	if (data->win_ptr)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	ft_free_ptr((void **)&(data->mlx_ptr));
+	if (data->mlx_ptr)
+		ft_free_ptr(data->mlx_ptr);
 	printf("\nGame exited\n");
 	exit(0);
 	return (0);
